@@ -1,9 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:rxdart/rxdart.dart';
-import './models/weather_info.dart';
+import './weather_models/weather_info.dart';
+import './repo_models/repository.dart';
 
 class NetWork {
   final BehaviorSubject<WeatherInfo> _subject = BehaviorSubject<WeatherInfo>();
+
+  final BehaviorSubject<Repository> _repoSubject =
+      BehaviorSubject<Repository>();
 
   requetWeatherData(String city) async {
     var dio = Dio();
@@ -18,11 +22,26 @@ class NetWork {
     }
   }
 
+  requestRepoData(String keyword) async {
+    var dio = Dio();
+    var baseURL = "https://api.github.com/search/repositories";
+    var param = {"q": keyword};
+    try {
+      final response = await dio.get(baseURL, queryParameters: param);
+      print(response.data);
+      Repository repo = Repository.fromJson(response.data);
+      _repoSubject.sink.add(repo);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   dispose() {
     _subject.close();
   }
 
   BehaviorSubject<WeatherInfo> get subject => _subject;
+  BehaviorSubject<Repository> get repo => _repoSubject;
 }
 
 final netWork = NetWork();
