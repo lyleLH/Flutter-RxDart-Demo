@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_app/repo_models/items.dart';
 import 'package:my_app/repo_models/repository.dart';
@@ -90,13 +91,20 @@ class _HomePageState extends State<HomePage> {
                 Divider(
                   height: 50,
                 ),
+                Container(
+                  padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
+                  height: 50,
+                  child: CupertinoTextField(
+                    controller: _controller,
+                  ),
+                ),
                 repoContent(context),
                 Divider(
                   height: 50,
                 ),
                 Container(
                   child: repoList(context),
-                  height: 400,
+                  height: 300,
                 ),
                 Divider(
                   height: 50,
@@ -146,6 +154,7 @@ class _HomePageState extends State<HomePage> {
         return Column(
           children: [
             Container(
+              padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
               height: 85,
               child: Row(
                 children: [

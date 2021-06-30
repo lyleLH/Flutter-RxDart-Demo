@@ -28,7 +28,7 @@ class NetWork {
     var param = {"q": keyword};
     try {
       final response = await dio.get(baseURL, queryParameters: param);
-      print(response.data);
+      // print(response.data);
       Repository repo = Repository.fromJson(response.data);
       _repoSubject.sink.add(repo);
     } catch (e) {
