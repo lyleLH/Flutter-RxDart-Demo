@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_app/repo_models/items.dart';
 import 'package:my_app/repo_models/repository.dart';
 import 'package:my_app/weather_models/weather_info.dart';
 import 'network.dart';
@@ -85,7 +86,17 @@ class _HomePageState extends State<HomePage> {
                 Divider(
                   height: 50,
                 ),
-                repoContent(context)
+                repoContent(context),
+                Divider(
+                  height: 50,
+                ),
+                Container(
+                  child: repoList(context),
+                  height: 400,
+                ),
+                Divider(
+                  height: 50,
+                ),
               ],
             ),
           );
@@ -149,6 +160,57 @@ class _HomePageState extends State<HomePage> {
             content
           ],
         );
+      },
+    );
+  }
+
+  StreamBuilder<Repository> repoList(BuildContext context) {
+    return StreamBuilder<Repository>(
+      stream: netWork.repo.stream,
+      builder: (BuildContext context, AsyncSnapshot<Repository> snapshot) {
+        Widget content;
+        if (snapshot.hasData) {
+          Repository repo;
+          repo = snapshot.requireData;
+          content = ListView.builder(
+            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+            scrollDirection: Axis.vertical, //垂直列表
+            itemCount: 30,
+            itemBuilder: (BuildContext context, int index) {
+              Items item = repo.items![index];
+              return Container(
+                // height: 70,
+                padding: EdgeInsets.only(left: 15),
+                child: Column(
+                  children: [
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Name : ${item.name}'),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text('FullName : ${item.fullName}'),
+                    ),
+                    Container(
+                      alignment: Alignment.centerLeft,
+                      child: Text('Description : ${item.description}'),
+                    ),
+                    Divider(),
+                  ],
+                ),
+              );
+            },
+          );
+        } else if (snapshot.hasError) {
+          content = Container(
+            child: Text("No"),
+          );
+        } else {
+          content = Container(
+            child: Text("Null"),
+          );
+        }
+        return content;
       },
     );
   }

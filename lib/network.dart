@@ -38,6 +38,7 @@ class NetWork {
 
   dispose() {
     _subject.close();
+    _repoSubject.close();
   }
 
   BehaviorSubject<WeatherInfo> get subject => _subject;
