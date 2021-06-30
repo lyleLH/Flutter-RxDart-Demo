@@ -13,6 +13,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String userInputText = '';
+  late TextEditingController _controller =
+      TextEditingController(text: userInputText);
+
   @override
   Widget build(BuildContext context) {
     netWork.requetWeatherData("New York");
@@ -179,23 +183,32 @@ class _HomePageState extends State<HomePage> {
             itemBuilder: (BuildContext context, int index) {
               Items item = repo.items![index];
               return Container(
-                // height: 70,
+                color: index % 2 == 0 ? Colors.white : Colors.lightGreenAccent,
                 padding: EdgeInsets.only(left: 15),
                 child: Column(
                   children: [
                     Container(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                       alignment: Alignment.centerLeft,
-                      child: Text('Name : ${item.name}'),
+                      child: Text(
+                        'Name : ${item.name}',
+                        style: TextStyle(
+                            fontSize: 15, fontWeight: FontWeight.bold),
+                      ),
                     ),
                     Container(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
                       alignment: Alignment.centerLeft,
                       child: Text('FullName : ${item.fullName}'),
                     ),
                     Container(
+                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
                       alignment: Alignment.centerLeft,
                       child: Text('Description : ${item.description}'),
                     ),
-                    Divider(),
+                    Divider(
+                      height: 1.0,
+                    ),
                   ],
                 ),
               );
