@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_app/pattern/page_customer_list.dart';
 import 'package:my_app/repo_models/items.dart';
 import 'package:my_app/repo_models/repository.dart';
 import 'package:my_app/weather_models/weather_info.dart';
@@ -186,43 +187,12 @@ class _HomePageState extends State<HomePage> {
           Repository repo;
           repo = snapshot.requireData;
           content = ListView.builder(
-            padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-            scrollDirection: Axis.vertical, //垂直列表
-            itemCount: 30,
-            itemBuilder: (BuildContext context, int index) {
-              Items item = repo.items![index];
-              return Container(
-                color: index % 2 == 0 ? Colors.white : Colors.lightGreenAccent,
-                padding: EdgeInsets.only(left: 15),
-                child: Column(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      alignment: Alignment.centerLeft,
-                      child: Text(
-                        'Name : ${item.name}',
-                        style: TextStyle(
-                            fontSize: 15, fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      alignment: Alignment.centerLeft,
-                      child: Text('FullName : ${item.fullName}'),
-                    ),
-                    Container(
-                      padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
-                      alignment: Alignment.centerLeft,
-                      child: Text('Description : ${item.description}'),
-                    ),
-                    Divider(
-                      height: 1.0,
-                    ),
-                  ],
-                ),
-              );
-            },
-          );
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+              scrollDirection: Axis.vertical, //垂直列表
+              itemCount: 30,
+              itemBuilder: (BuildContext context, int index) {
+                return _buildListItem(repo, context, index);
+              });
         } else if (snapshot.hasError) {
           content = Container(
             child: Text("No"),
@@ -233,6 +203,48 @@ class _HomePageState extends State<HomePage> {
           );
         }
         return content;
+      },
+    );
+  }
+
+  Widget _buildListItem(Repository repo, BuildContext ctx, int index) {
+    Items item = repo.items![index];
+    return GestureDetector(
+      child: Container(
+        color: index % 2 == 0 ? Colors.white : Colors.lightGreenAccent,
+        padding: EdgeInsets.only(left: 15),
+        child: Column(
+          children: [
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Name : ${item.name}',
+                style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 0),
+              alignment: Alignment.centerLeft,
+              child: Text('FullName : ${item.fullName}'),
+            ),
+            Container(
+              padding: EdgeInsets.fromLTRB(0, 10, 0, 10),
+              alignment: Alignment.centerLeft,
+              child: Text('Description : ${item.description}'),
+            ),
+            Divider(
+              height: 1.0,
+            ),
+          ],
+        ),
+      ),
+      onTap: () => {
+        Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (_) => PageCustomerList(),
+          ),
+        )
       },
     );
   }

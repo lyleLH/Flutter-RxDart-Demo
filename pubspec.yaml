@@ -32,6 +32,7 @@ dependencies:
   dio: ^4.0.0
   equatable: ^2.0.3
   flutter_svprogresshud: ^0.0.7
+  faker: ^2.0.0
 
 dev_dependencies:
   flutter_test:
