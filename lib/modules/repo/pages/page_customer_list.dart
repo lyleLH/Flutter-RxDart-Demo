@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/modules/repo/pattern/page_customer_details.dart';
+import 'package:my_app/modules/customer/pages/customer_details.dart';
 
 import '../../customer/customer_manager.dart';
 
@@ -12,7 +12,7 @@ class PageCustomerList extends StatefulWidget {
 }
 
 class _PageCustomerListState extends State<PageCustomerList> {
-  var detailsPage = PageCustomerDetails(id: "anID");
+  var detailsPage = CustomerDetailsPage(id: "anID");
 
   @override
   void initState() {
