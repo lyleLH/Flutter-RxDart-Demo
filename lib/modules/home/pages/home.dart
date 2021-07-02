@@ -1,34 +1,38 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svprogresshud/flutter_svprogresshud.dart';
+import 'package:my_app/commons/network/YKNetWorking.dart';
 import 'package:my_app/commons/network/network.dart';
 import 'package:my_app/modules/home/model/repo_models/items.dart';
 import 'package:my_app/modules/home/model/repo_models/repository.dart';
 import 'package:my_app/modules/home/model/weather_models/weather_info.dart';
+import 'package:my_app/modules/home/viewmodel/home_view_model.dart';
 import 'package:my_app/modules/repo/pages/customer_list.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
-
+  var _homeViewModel = HomeViewModel();
   @override
   _HomePageState createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  @override
   String userInputText = '';
   late TextEditingController _controller =
       TextEditingController(text: userInputText);
 
   @override
   Widget build(BuildContext context) {
-    netWork.requetWeatherData("New York");
+    widget._homeViewModel.requetWeatherData("New York");
+    // netWork.requetWeatherData("New York");
     SVProgressHUD.show(status: 'Doing Stuff');
     return Scaffold(
       appBar: AppBar(
         title: Text("天气"),
       ),
       body: StreamBuilder<WeatherInfo>(
-        stream: netWork.subject.stream,
+        stream: widget._homeViewModel.subject.stream,
         builder: (context, AsyncSnapshot<WeatherInfo> snapshot) {
           SVProgressHUD.dismiss();
           Container content;
@@ -50,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          netWork.requetWeatherData("London");
+                          widget._homeViewModel.requetWeatherData("London");
                           SVProgressHUD.show(status: 'Doing Stuff');
                         },
                         child: Text("London"),
@@ -59,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          netWork.requetWeatherData("New York");
+                          widget._homeViewModel.requetWeatherData("New York");
                           SVProgressHUD.show(status: 'Doing Stuff');
                         },
                         child: Text("New York"),
@@ -68,7 +72,7 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          netWork.requetWeatherData("Wuhan");
+                          widget._homeViewModel.requetWeatherData("Wuhan");
                           SVProgressHUD.show(status: 'Doing Stuff');
                         },
                         child: Text("Wuhan"),
@@ -77,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          netWork.requetWeatherData("Shenzhen");
+                          widget._homeViewModel.requetWeatherData("Shenzhen");
                           SVProgressHUD.show(status: 'Doing Stuff');
                         },
                         child: Text("Shenzhen"),
