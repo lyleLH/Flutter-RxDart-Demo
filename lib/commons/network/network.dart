@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:my_app/modules/home/model/repo_models/repository.dart';
+import 'package:my_app/modules/repo/models/repo_models/repository.dart';
+
 import 'package:rxdart/rxdart.dart';
 
 import 'YKNetWorking.dart';
