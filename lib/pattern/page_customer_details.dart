@@ -15,7 +15,8 @@ class _PageCustomerDetailsState extends State<PageCustomerDetails> {
   @override
   void initState() {
     super.initState();
-    var res = await widget.delegate.getCustomerDetails(widget.id);
+
+    var res = widget.delegate.getCustomerDetails(widget.id);
     print(res.toString());
   }
 

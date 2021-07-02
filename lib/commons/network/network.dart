@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:my_app/modules/home/model/repo_models/repository.dart';
+import 'package:my_app/modules/home/model/weather_models/weather_info.dart';
 import 'package:rxdart/rxdart.dart';
-import './weather_models/weather_info.dart';
-import './repo_models/repository.dart';
 
 class NetWork {
   final BehaviorSubject<WeatherInfo> _subject = BehaviorSubject<WeatherInfo>();

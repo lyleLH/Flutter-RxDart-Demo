@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/pattern/page_customer_list.dart';
-import 'package:my_app/repo_models/items.dart';
-import 'package:my_app/repo_models/repository.dart';
-import 'package:my_app/weather_models/weather_info.dart';
-import 'network.dart';
 import 'package:flutter_svprogresshud/flutter_svprogresshud.dart';
+import 'package:my_app/commons/network/network.dart';
+import 'package:my_app/modules/home/model/repo_models/items.dart';
+import 'package:my_app/modules/home/model/repo_models/repository.dart';
+import 'package:my_app/modules/home/model/weather_models/weather_info.dart';
+
+import 'package:my_app/pattern/page_customer_list.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);

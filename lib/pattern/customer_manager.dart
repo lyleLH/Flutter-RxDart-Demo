@@ -1,5 +1,5 @@
 import 'package:faker/faker.dart';
-import 'package:my_app/pattern/customer_details.dart';
+import 'package:my_app/pattern/models/customer_details.dart';
 import 'package:my_app/pattern/customer_details_protocol.dart';
 
 class CustomerManager implements CustomerDetailsProtocol {
