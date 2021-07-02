@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/pattern/customer_details_protocol.dart';
-import 'package:my_app/pattern/customer_manager.dart';
 
-class PageCustomerDetails extends StatefulWidget {
+import '../customer_details_protocol.dart';
+
+class CustomerDetailsPage extends StatefulWidget {
   final String id;
-  PageCustomerDetails({Key? key, required this.id}) : super(key: key);
+  CustomerDetailsPage({Key? key, required this.id}) : super(key: key);
   late final CustomerDetailsProtocol delegate;
   @override
-  _PageCustomerDetailsState createState() => _PageCustomerDetailsState();
+  _CustomerDetailsPageState createState() => _CustomerDetailsPageState();
 }
 
-class _PageCustomerDetailsState extends State<PageCustomerDetails> {
+class _CustomerDetailsPageState extends State<CustomerDetailsPage> {
   @override
   void initState() {
     super.initState();

@@ -1,17 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:my_app/pattern/customer_manager.dart';
-import 'package:my_app/pattern/page_customer_details.dart';
 
-class PageCustomerList extends StatefulWidget {
-  PageCustomerList({Key? key}) : super(key: key);
+import '../customer_manager.dart';
+import 'customer_details.dart';
+
+class CustomerListPage extends StatefulWidget {
+  CustomerListPage({Key? key}) : super(key: key);
 
   @override
-  _PageCustomerListState createState() => _PageCustomerListState();
+  _CustomerListPageState createState() => _CustomerListPageState();
 }
 
-class _PageCustomerListState extends State<PageCustomerList> {
-  var detailsPage = PageCustomerDetails(id: "anID");
+class _CustomerListPageState extends State<CustomerListPage> {
+  var detailsPage = CustomerDetailsPage(id: "anID");
 
   @override
   void initState() {

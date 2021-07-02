@@ -5,8 +5,7 @@ import 'package:my_app/commons/network/network.dart';
 import 'package:my_app/modules/home/model/repo_models/items.dart';
 import 'package:my_app/modules/home/model/repo_models/repository.dart';
 import 'package:my_app/modules/home/model/weather_models/weather_info.dart';
-
-import 'package:my_app/pattern/page_customer_list.dart';
+import 'package:my_app/modules/repo/pages/customer_list.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);
@@ -243,7 +242,7 @@ class _HomePageState extends State<HomePage> {
       onTap: () => {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: (_) => PageCustomerList(),
+            builder: (_) => CustomerListPage(),
           ),
         )
       },
