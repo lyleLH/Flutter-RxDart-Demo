@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svprogresshud/flutter_svprogresshud.dart';
 import 'package:my_app/commons/network/YKNetWorking.dart';
 import 'package:my_app/commons/network/network.dart';
-import 'package:my_app/modules/home/model/repo_models/items.dart';
-import 'package:my_app/modules/home/model/repo_models/repository.dart';
+import 'package:my_app/modules/customer/pages/customer_list.dart';
 import 'package:my_app/modules/home/model/weather_models/weather_info.dart';
 import 'package:my_app/modules/home/viewmodel/home_view_model.dart';
-import 'package:my_app/modules/repo/pages/customer_list.dart';
+import 'package:my_app/modules/repo/models/repo_models/items.dart';
+import 'package:my_app/modules/repo/models/repo_models/repository.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);

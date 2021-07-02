@@ -1,6 +1,6 @@
 import 'package:faker/faker.dart';
 
-import 'customer_details.dart';
+import '../models/customer_details.dart';
 
 class Customer {
   late final String id;
