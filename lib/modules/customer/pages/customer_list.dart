@@ -33,21 +33,22 @@ class _CustomerListPageState extends State<CustomerListPage> {
               child: Text("列表"),
             ),
             ElevatedButton(
-                onPressed: () => {
-                      Future.delayed(
-                        Duration.zero,
-                        () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (_) {
-                                return this.detailsPage;
-                              },
-                            ),
-                          );
+              onPressed: () => {
+                Future.delayed(
+                  Duration.zero,
+                  () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (_) {
+                          return this.detailsPage;
                         },
-                      )
-                    },
-                child: Text("Push"))
+                      ),
+                    );
+                  },
+                ),
+              },
+              child: Text("Push"),
+            ),
           ],
         ),
       ),
