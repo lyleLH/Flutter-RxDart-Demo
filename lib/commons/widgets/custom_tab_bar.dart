@@ -26,9 +26,9 @@ class _CustomTabbarState extends State<CustomTabbar> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        appBar: AppBar(
-          title: Text("Tabbar"),
-        ),
+        // appBar: AppBar(
+        //   title: Text("Tabbar"),
+        // ),
         body: Center(
           child: _widgetOptions[_selectedIndex],
         ),
