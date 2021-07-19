@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_app/modules/bloc/bloc_demo.dart';
 import 'package:my_app/modules/home/pages/home.dart';
 
 class CustomTabbar extends StatefulWidget {
@@ -13,7 +14,7 @@ class _CustomTabbarState extends State<CustomTabbar> {
   int _selectedIndex = 0;
   List<Widget> _widgetOptions = <Widget>[
     HomePage(),
-    Text("Message"),
+    BLOCDemoPages(),
     Text("Profile"),
   ];
   void _onItemTap(int index) {
@@ -35,8 +36,7 @@ class _CustomTabbarState extends State<CustomTabbar> {
         bottomNavigationBar: BottomNavigationBar(
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.message), label: "Message"),
+            BottomNavigationBarItem(icon: Icon(Icons.message), label: "BLoc"),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
           ],
           currentIndex: _selectedIndex,
